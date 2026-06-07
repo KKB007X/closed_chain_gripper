@@ -1,0 +1,1 @@
+/home/kkb007x/closed_chain_gripper/build/gripper_description/ament_cmake_core/gripper_descriptionConfig-version.cmake

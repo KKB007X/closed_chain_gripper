@@ -1,0 +1,1449 @@
+<?xml version="1.0"?>
+
+  
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="gripper_description">
+
+  <xacro:arg name="controllers_file"
+           default="/tmp/controllers.yaml"/>
+
+  <gazebo>
+    <plugin
+      filename="/opt/ros/jazzy/lib/libgz_ros2_control-system.so"
+      name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+
+      <parameters>$(arg controllers_file)</parameters>
+
+    </plugin>
+  </gazebo>
+
+  <!-- <gazebo>
+      <plugin
+          filename="/home/kkb007x/closed_chain_gripper/install/gripper_plugins/lib/libgripper_plugin.so"
+          name="gripper_plugins::SpringPlugin"/>
+  </gazebo> -->
+
+<gazebo>
+  <self_collide>true</self_collide>
+</gazebo>
+
+  <ros2_control name="GazeboSystem" type="system">
+
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+
+    <joint name="BR">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="BL">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="jR11">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="jL11">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+  </ros2_control>
+
+  <xacro:property name="joint_damping" value="0.1"/>
+  <xacro:property name="joint_friction" value="0.0"/>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0322404009961569 -0.0121839545480329 0.0242001899898715"
+        rpy="0 0 0" />
+      <!-- 0.273578996308918 -->
+      <mass
+        value="1000" />
+      <inertia
+          ixx="1.492"
+          ixy="-0.00339"
+          ixz="0.376"
+          iyy="8.409"
+          iyz="-0.0388"
+          izz="7.240"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="R0">
+    <inertial>
+      <origin
+        xyz="0.00462701433812369 -0.0042003563347738 -0.0157310959910837"
+        rpy="0 0 0" />
+      <mass
+        value="0.0750116042111743" />
+      <inertia
+        ixx="1.45347204744741E-05"
+        ixy="-9.11265277816875E-07"
+        ixz="-2.76020077437339E-07"
+        iyy="1.74679741367642E-05"
+        iyz="1.97812443216016E-08"
+        izz="2.60590712125727E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R0.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R0.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BR"
+    type="prismatic">
+    <origin
+      xyz="-0.11531 -0.042524 -0.059709"
+      rpy="-3.1416 0 0.065406" />
+    <parent
+      link="base_link" />
+    <child
+      link="R0" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0.1"
+      effort="10"
+      velocity="1" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="R11">
+    <inertial>
+      <origin
+        xyz="-0.00148352942504504 -0.000166455445621716 0.0215102433565049"
+        rpy="0 0 0" />
+      <mass
+        value="0.00247788084165121" />
+      <inertia
+        ixx="4.16684022932768E-07"
+        ixy="-9.59529510561512E-23"
+        ixz="-4.1534145403795E-09"
+        iyy="4.2333409280235E-07"
+        iyz="-5.89986571903447E-22"
+        izz="2.35170156233658E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jR11"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0.062267 0" />
+    <parent
+      link="R0" />
+    <child
+      link="R11" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="1000"
+      velocity="1" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="R12">
+    <inertial>
+      <origin
+        xyz="0.00684373395702625 5.55111512312578E-17 0.00636062044373634"
+        rpy="0 0 0" />
+      <mass
+        value="0.00154436431180963" />
+      <inertia
+        ixx="4.41203010878178E-08"
+        ixy="6.0384184716371E-23"
+        ixz="-1.17256664019142E-10"
+        iyy="1.21407436401498E-07"
+        iyz="-3.10606320013662E-22"
+        izz="8.14054401451723E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R12.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R12.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jR12"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0 0 0.037616"
+      rpy="0 0.27082 0" />
+    <parent
+      link="R11" />
+    <child
+      link="R12" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="R13">
+    <inertial>
+      <origin
+        xyz="-0.00129354632500545 -3.12250225675825E-16 0.0188077890894883"
+        rpy="0 0 0" />
+      <mass
+        value="0.00291104044468461" />
+      <inertia
+        ixx="4.6470048093132E-07"
+        ixy="-8.9335506155727E-23"
+        ixz="2.28439173971017E-21"
+        iyy="4.66918501832891E-07"
+        iyz="1.52366668832268E-21"
+        izz="3.04993224394877E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R13.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R13.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jR13"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+      velocity="100"/>
+    <origin
+      xyz="0 0 0.0126984206684708"
+      rpy="0 -0.0869779675075645 0" />
+    <parent
+      link="R12" />
+    <child
+      link="R13" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="R14">
+    <inertial>
+      <origin
+        xyz="-0.00159728266465028 -0.000127737938442049 0.00980504402347104"
+        rpy="0 0 0" />
+      <mass
+        value="0.000855794450563546" />
+      <inertia
+        ixx="4.91644817806748E-08"
+        ixy="-6.29366634353681E-11"
+        ixz="1.28101257125642E-09"
+        iyy="5.61237339035891E-08"
+        iyz="-3.82606685454945E-10"
+        izz="1.01070819767269E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R14.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R14.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jR14"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0 0 0.0376155781789762"
+      rpy="-3.14159265358979 1.13622687888438 -3.14159265358979" />
+    <parent
+      link="R13" />
+    <child
+      link="R14" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="R21">
+    <inertial>
+      <origin
+        xyz="0.00295950346882796 -0.0149386136139195 0.0189032972186492"
+        rpy="0 0 0" />
+      <mass
+        value="0.00383104152389727" />
+      <inertia
+        ixx="1.27270952699547E-06"
+        ixy="1.49758621969911E-10"
+        ixz="1.08068040766418E-08"
+        iyy="4.60668729964555E-07"
+        iyz="5.13769649609066E-10"
+        izz="8.83192201545963E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R21.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R21.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jR21"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0.021791 0 0"
+      rpy="0 -0.0022637 0" />
+    <parent
+      link="R0" />
+    <child
+      link="R21" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="R22">
+    <inertial>
+      <origin
+        xyz="0.00255512642912835 -0.0147979035481008 0.0193778242116071"
+        rpy="0 0 0" />
+      <mass
+        value="0.00641426678278481" />
+      <inertia
+        ixx="2.31727374237321E-06"
+        ixy="3.7066844920426E-10"
+        ixz="-4.93604691847286E-09"
+        iyy="5.04145047786201E-07"
+        iyz="-1.11263648753588E-10"
+        izz="1.87825144784261E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R22.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R22.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jR22"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0 0 0.0375980625533051"
+      rpy="0 0.234125795859488 0" />
+    <parent
+      link="R21" />
+    <child
+      link="R22" />
+    <axis
+      xyz="0 1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="R23">
+    <inertial>
+      <origin
+        xyz="0.000725879768722099 -0.0147490918954057 0.00921347775752149"
+        rpy="0 0 0" />
+      <mass
+        value="0.00416085934979352" />
+      <inertia
+        ixx="1.03788232810775E-06"
+        ixy="-1.20969710263363E-09"
+        ixz="-3.72096117255084E-08"
+        iyy="3.21002104187949E-07"
+        iyz="-1.16667048056618E-08"
+        izz="7.51361056860196E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R23.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R23.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jR23"
+    type="revolute">
+    <origin
+      xyz="0 0 0.037547"
+      rpy="0 -0.23186 0" />
+    <parent
+      link="R22" />
+    <child
+      link="R23" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10"
+      velocity="1" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="R31">
+    <inertial>
+      <origin
+        xyz="-0.00524378805995029 -1.0860583266048E-13 0.0321562998871323"
+        rpy="0 0 0" />
+      <mass
+        value="0.00466986556397568" />
+      <inertia
+        ixx="2.31207413937099E-06"
+        ixy="4.48265717554737E-20"
+        ixz="-1.30907661533039E-07"
+        iyy="2.48097882210357E-06"
+        iyz="2.90506089622565E-20"
+        izz="2.01876184588613E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R31.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R31.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jR31"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="-0.0181447421942682 -0.0290000000000147 0.000650894535383834"
+      rpy="0 0.55680256519482 0" />
+    <parent
+      link="R0" />
+    <child
+      link="R31" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="R311">
+    <inertial>
+      <origin
+        xyz="0.00642701244580534 -1.67140606910365E-15 0.0131810825729761"
+        rpy="0 0 0" />
+      <mass
+        value="0.0012752435112436" />
+      <inertia
+        ixx="1.04103806667515E-07"
+        ixy="-2.27598745543966E-21"
+        ixz="-8.73915148640386E-09"
+        iyy="1.49169214200332E-07"
+        iyz="-2.62251409355343E-20"
+        izz="5.87253204055131E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R311.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R311.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jR311"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0 0 0.0461961376509757"
+      rpy="3.1415926535887 1.38635179567719 3.14159265358843" />
+    <parent
+      link="R31" />
+    <child
+      link="R311" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="R312">
+    <inertial>
+      <origin
+        xyz="-0.000247761230079246 0.000999999999994579 0.0105701715612085"
+        rpy="0 0 0" />
+      <mass
+        value="0.000789518544793439" />
+      <inertia
+        ixx="7.3976201887365E-08"
+        ixy="-1.65436122510606E-24"
+        ixz="-7.30020466664284E-12"
+        iyy="7.89102222353134E-08"
+        iyz="1.71274725165523E-20"
+        izz="7.0394031340644E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R312.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/R312.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jR312"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="-0.000135085779788074 0 0.0670020264570977"
+      rpy="0 0.116288989682376 0" />
+    <parent
+      link="R31" />
+    <child
+      link="R312" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L0">
+    <inertial>
+      <origin
+        xyz="0.00459139281574747 -0.00420035633785231 -0.0157415296266149"
+        rpy="0 0 0" />
+      <mass
+        value="0.075011604199313" />
+      <inertia
+        ixx="1.453352990464E-05"
+        ixy="-9.11218165462251E-07"
+        ixz="-2.49930238647065E-07"
+        iyy="1.74679741362087E-05"
+        iyz="2.18439775976358E-08"
+        izz="2.60602617817316E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L0.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L0.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BL"
+    type="prismatic">
+    <origin
+      xyz="0.050495 -0.0018828 -0.059709"
+      rpy="-3.1416 0.0022637 -3.0762" />
+    <parent
+      link="base_link" />
+    <child
+      link="L0" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-0.1"
+      upper="0"
+      effort="10"
+      velocity="1" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L11">
+    <inertial>
+      <origin
+        xyz="-0.0014835294250448 -0.00016645544562097 0.0215102433565044"
+        rpy="0 0 0" />
+      <mass
+        value="0.002477880841651" />
+      <inertia
+        ixx="4.1668402293273E-07"
+        ixy="-8.9335506155727E-23"
+        ixz="-4.15341454037388E-09"
+        iyy="4.23334092802313E-07"
+        iyz="-1.96243430449377E-21"
+        izz="2.35170156233629E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jL11"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0.064531 0" />
+    <parent
+      link="L0" />
+    <child
+      link="L11" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="1000"
+      velocity="1" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L12">
+    <inertial>
+      <origin
+        xyz="0.00684373395702498 1.29323635134071E-15 0.00636062044373874"
+        rpy="0 0 0" />
+      <mass
+        value="0.00154436431180962" />
+      <inertia
+        ixx="4.41203010878174E-08"
+        ixy="-6.41064974728596E-23"
+        ixz="-1.17256664030839E-10"
+        iyy="1.21407436401499E-07"
+        iyz="-4.9475740388328E-22"
+        izz="8.14054401451737E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L12.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L12.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jL12"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0 0 0.0376155781789765"
+      rpy="0 0.270824776926911 0" />
+    <parent
+      link="L11" />
+    <child
+      link="L12" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L13">
+    <inertial>
+      <origin
+        xyz="-0.00129354632500561 5.18682319317065E-16 0.018807789089488"
+        rpy="0 0 0" />
+      <mass
+        value="0.0029110404446846" />
+      <inertia
+        ixx="4.64700480931331E-07"
+        ixy="8.10637000301967E-23"
+        ixz="1.5605149996725E-21"
+        iyy="4.66918501832902E-07"
+        iyz="2.63963673223328E-21"
+        izz="3.04993224394879E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L13.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L13.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jL13"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0 0 0.0126984206684781"
+      rpy="0 -0.086977967507802 0" />
+    <parent
+      link="L12" />
+    <child
+      link="L13" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L14">
+    <inertial>
+      <origin
+        xyz="-0.00159728266464364 -0.00012773793844099 0.00980504402346934"
+        rpy="0 0 0" />
+      <mass
+        value="0.000855794450563597" />
+      <inertia
+        ixx="4.91644817806788E-08"
+        ixy="-6.29366634352898E-11"
+        ixz="1.28101257125914E-09"
+        iyy="5.61237339035933E-08"
+        iyz="-3.82606685454956E-10"
+        izz="1.01070819767276E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L14.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L14.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jL14"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0 0 0.0376155781789763"
+      rpy="-3.14159265358979 1.13622687888435 -3.14159265358979" />
+    <parent
+      link="L13" />
+    <child
+      link="L14" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L21">
+    <inertial>
+      <origin
+        xyz="0.00295950346882547 -0.0149386136139188 0.0189032972186496"
+        rpy="0 0 0" />
+      <mass
+        value="0.00383104152389725" />
+      <inertia
+        ixx="1.27270952699544E-06"
+        ixy="1.49758621969011E-10"
+        ixz="1.08068040766976E-08"
+        iyy="4.60668729964544E-07"
+        iyz="5.13769649602043E-10"
+        izz="8.83192201545952E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L21.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L21.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jL21"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0.0217911124180474 0 -4.93275404645499E-05"
+      rpy="0 0 0" />
+    <parent
+      link="L0" />
+    <child
+      link="L21" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L22">
+    <inertial>
+      <origin
+        xyz="0.00255512642912824 -0.0147979035480992 0.019377824211607"
+        rpy="0 0 0" />
+      <mass
+        value="0.00641426678278475" />
+      <inertia
+        ixx="2.31727374237317E-06"
+        ixy="3.70668449202143E-10"
+        ixz="-4.93604691847189E-09"
+        iyy="5.04145047786165E-07"
+        iyz="-1.1126364874968E-10"
+        izz="1.8782514478426E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L22.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L22.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jL22"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0 0 0.0375980625533091"
+      rpy="0 0.234125795859406 0" />
+    <parent
+      link="L21" />
+    <child
+      link="L22" />
+    <axis
+      xyz="0 1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L23">
+    <inertial>
+      <origin
+        xyz="0.000725879768930258 -0.0147490918954033 0.00921347775758877"
+        rpy="0 0 0" />
+      <mass
+        value="0.00416085934979353" />
+      <inertia
+        ixx="1.03788232810765E-06"
+        ixy="-1.20969710265183E-09"
+        ixz="-3.72096117259404E-08"
+        iyy="3.2100210418795E-07"
+        iyz="-1.16667048056574E-08"
+        izz="7.51361056860309E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L23.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L23.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jL23"
+    type="revolute">
+    <origin
+      xyz="0 0 0.037547"
+      rpy="0 -0.23186 0" />
+    <parent
+      link="L22" />
+    <child
+      link="L23" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10"
+      velocity="1" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L31">
+    <inertial>
+      <origin
+        xyz="-0.00524378805995215 -1.0861450627786E-13 0.0321562998871508"
+        rpy="0 0 0" />
+      <mass
+        value="0.00466986556397559" />
+      <inertia
+        ixx="2.3120741393709E-06"
+        ixy="4.54221417965119E-20"
+        ixz="-1.30907661533328E-07"
+        iyy="2.48097882210352E-06"
+        iyz="2.95884573061749E-20"
+        izz="2.01876184588644E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L31.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L31.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jL31"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="-0.0181432223101448 -0.0290000000000167 0.000691966182159762"
+      rpy="0 0.55906621540524 0" />
+    <parent
+      link="L0" />
+    <child
+      link="L31" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L311">
+    <inertial>
+      <origin
+        xyz="0.00642701244581147 3.71924713249427E-15 0.0131810825729814"
+        rpy="0 0 0" />
+      <mass
+        value="0.00127524351124365" />
+      <inertia
+        ixx="1.04103806667531E-07"
+        ixy="-2.57005016320226E-21"
+        ixz="-8.73915148636982E-09"
+        iyy="1.49169214200336E-07"
+        iyz="-2.68132663510595E-20"
+        izz="5.87253204055011E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L311.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L311.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jL311"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="0 0 0.0461961376509927"
+      rpy="3.14159265358874 1.3863517956764 3.14159265358846" />
+    <parent
+      link="L31" />
+    <child
+      link="L311" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+  <link
+    name="L312">
+    <inertial>
+      <origin
+        xyz="-0.00024776123009515 0.000999999999999189 0.010570171561165"
+        rpy="0 0 0" />
+      <mass
+        value="0.000789518544793503" />
+      <inertia
+        ixx="7.39762018873715E-08"
+        ixy="9.51257704435982E-24"
+        ixz="-7.30020461555165E-12"
+        iyy="7.89102222353199E-08"
+        iyz="1.55239828991182E-20"
+        izz="7.0394031340651E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L312.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/L312.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jL312"
+    type="revolute">
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+    velocity="100"/>
+    <origin
+      xyz="-0.000135085779785257 0 0.0670020264571147"
+      rpy="0 0.116288989682994 0" />
+    <parent
+      link="L31" />
+    <child
+      link="L312" />
+    <axis
+      xyz="0 -1 0" />
+    <dynamics
+    damping="${joint_damping}"
+    friction="${joint_friction}"/>
+  </joint>
+</robot>

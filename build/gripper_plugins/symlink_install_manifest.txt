@@ -1,0 +1,16 @@
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/lib/libgripper_plugin.so
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/ament_index/resource_index/package_run_dependencies/gripper_plugins
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/ament_index/resource_index/parent_prefix_path/gripper_plugins
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/environment/ament_prefix_path.sh
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/environment/ament_prefix_path.dsv
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/environment/path.sh
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/environment/path.dsv
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/local_setup.bash
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/local_setup.sh
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/local_setup.zsh
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/local_setup.dsv
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/package.dsv
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/ament_index/resource_index/packages/gripper_plugins
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/cmake/gripper_pluginsConfig.cmake
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/cmake/gripper_pluginsConfig-version.cmake
+/home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/package.xml

@@ -1,0 +1,29 @@
+[0.013s] Invoking command in '/home/kkb007x/closed_chain_gripper/build/gripper_plugins': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/kkb007x/closed_chain_gripper/build/gripper_plugins -- -j16 -l16
+[0.103s] [ 50%] [32mBuilding CXX object CMakeFiles/gripper_plugin.dir/src/gripper_plugin.cpp.o[0m
+[1.978s] [01m[K/home/kkb007x/closed_chain_gripper/src/gripper_plugins/src/gripper_plugin.cpp:[m[K In member function ‘[01m[Kvirtual void gripper_plugins::SpringPlugin::[01;32m[KConfigure[m[K(const gz::sim::v8::Entity&, const std::shared_ptr<const sdf::v14::Element>&, gz::sim::v8::EntityComponentManager&, gz::sim::v8::EventManager&)[m[K’:
+[1.978s] [01m[K/home/kkb007x/closed_chain_gripper/src/gripper_plugins/src/gripper_plugin.cpp:23:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kecm[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[1.978s]    23 |         [01;35m[Kgz::sim::EntityComponentManager &ecm[m[K,
+[1.979s]       |         [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[3.137s] [100%] [32m[1mLinking CXX shared library libgripper_plugin.so[0m
+[3.324s] [100%] Built target gripper_plugin
+[3.336s] Invoked command in '/home/kkb007x/closed_chain_gripper/build/gripper_plugins' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/kkb007x/closed_chain_gripper/build/gripper_plugins -- -j16 -l16
+[3.337s] Invoking command in '/home/kkb007x/closed_chain_gripper/build/gripper_plugins': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/kkb007x/closed_chain_gripper/build/gripper_plugins
+[3.345s] -- Install configuration: ""
+[3.346s] -- Execute custom install script
+[3.346s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/lib/libgripper_plugin.so
+[3.346s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/ament_index/resource_index/package_run_dependencies/gripper_plugins
+[3.346s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/ament_index/resource_index/parent_prefix_path/gripper_plugins
+[3.347s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/environment/ament_prefix_path.sh
+[3.347s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/environment/ament_prefix_path.dsv
+[3.347s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/environment/path.sh
+[3.347s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/environment/path.dsv
+[3.347s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/local_setup.bash
+[3.347s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/local_setup.sh
+[3.347s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/local_setup.zsh
+[3.347s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/local_setup.dsv
+[3.347s] -- Symlinking: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/package.dsv
+[3.356s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/ament_index/resource_index/packages/gripper_plugins
+[3.356s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/cmake/gripper_pluginsConfig.cmake
+[3.356s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/cmake/gripper_pluginsConfig-version.cmake
+[3.357s] -- Up-to-date symlink: /home/kkb007x/closed_chain_gripper/install/gripper_plugins/share/gripper_plugins/package.xml
+[3.358s] Invoked command in '/home/kkb007x/closed_chain_gripper/build/gripper_plugins' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/kkb007x/closed_chain_gripper/build/gripper_plugins
