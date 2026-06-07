@@ -1,1 +1,0 @@
-/home/kkb007x/closed_chain_gripper/build/gripper_description/ament_cmake_environment_hooks/local_setup.bash
