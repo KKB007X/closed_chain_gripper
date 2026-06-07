@@ -1,4 +1,0 @@
-[01m[K/home/kkb007x/closed_chain_gripper/src/gripper_plugins/src/gripper_plugin.cpp:[m[K In member function ‘[01m[Kvirtual void gripper_plugins::SpringPlugin::[01;32m[KConfigure[m[K(const gz::sim::v8::Entity&, const std::shared_ptr<const sdf::v14::Element>&, gz::sim::v8::EntityComponentManager&, gz::sim::v8::EventManager&)[m[K’:
-[01m[K/home/kkb007x/closed_chain_gripper/src/gripper_plugins/src/gripper_plugin.cpp:23:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kecm[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
-   23 |         [01;35m[Kgz::sim::EntityComponentManager &ecm[m[K,
-      |         [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
