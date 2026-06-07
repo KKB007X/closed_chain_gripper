@@ -1,5 +1,7 @@
 # Closed Chain Gripper Simulation
 
+<LINK_TO_PREVIOUS_PROJECT : https://github.com/KKB007X/urdf-closed-chain-links>
+
 This project is an application and simulation of a closed-chain robotic gripper developed as part of a larger robotics project.
 
 The focus of this work is the software and simulation stack, including:
